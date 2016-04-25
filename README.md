@@ -24,7 +24,8 @@ var Shout = new errorShout(botToken, chatId);
 
 ### Usage ###
 
-getBotName() - returns a promise that resolves with the bots name
+#####getBotName()#####
+returns a promise that resolves with the bots name
 ```js
 Shout.getBotName()
 .then(function(name){
@@ -32,7 +33,8 @@ Shout.getBotName()
 });
 ```
 
-sendError(message, source, methodName) - returns a promise that will send the message to configured chatId
+#####sendError(message, source, methodName)#####
+returns a promise that will send the message to configured chatId
 ```js
 Shout.sendError('Oh no, an error', 'error-shout-bot-example', 'doingSomething')
 .then(function(responseFromTelegramApi){
