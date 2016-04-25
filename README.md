@@ -3,7 +3,7 @@ Is a library that uses [Telegram](http://telegram.org) to send messages from you
 
 ### Installation & Configuration ###
 
-error-shout-bot is available as a npm package
+error-shout-bot is available as a [npm package](https://www.npmjs.com/package/error-shout-bot)
 ```sh 
 npm install error-shout-bot --save
 ```
@@ -51,9 +51,7 @@ The "source" and "methodName" parameters of sendError are optional
 Shout.sendError('Oh no - This is an error');
 ```
 
-Example of the message output:
-
-----
+###Example of the message output:###
 
 **Date:** Mon Apr 25 2016 13:20:25 GMT+0100 (IST)
 
