@@ -1,28 +1,28 @@
 var errorShout = require('./index.js');
 
-//Reading in token and chatId from environment variables
-var BOT_TOKEN = process.env.ERROR_SHOUT_BOT_TOKEN;
-var ERROR_CHAT_ID = process.env.ERROR_SHOUT_CHAT_ID;
+// Reading in token and chatId from environment variables
+var botToken = process.env.ERROR_SHOUT_BOT_TOKEN;
+var chatId = process.env.ERROR_SHOUT_CHAT_ID;
 
-var Shout = new errorShout(BOT_TOKEN, ERROR_CHAT_ID);
-
-// Make sure to have ERROR_SHOUT_BOT_TOKEN & ERROR_SHOUT_ENDPOINT set.
-// ERROR_SHOUT_ENDPOINT can be a chatID, GroupID or a channel (but @channelName)
-// Make sure the bot is authorized to post in the endpoint
+// chatId can be a chatID, GroupID or a channel (e.g @channelName)
+// Make sure the bot is authorized to post in the configured place
+var Shout = new errorShout(botToken, chatId);
 
 // getBotName - This can be used to log the name of the bot that is configured
 Shout.getBotName()
-.then(function(name){
+.then(function(name) {
+  /* eslint-disable no-console */
   console.log(name);
+  /* eslint-disable no-console */
 });
 
 // sendError - Example of a simple message
 Shout.sendError('Oh no - This is an error');
 
 // sendError - Example of a message with a source and methodName inside a catch
-try{
+try {
   var testVar = null;
   testVar.doSomething();
-} catch(error) {
+} catch (error) {
   Shout.sendError(error, 'error-shout-bot example', 'doSomething');
 }

@@ -4,7 +4,9 @@
   "description": "Library for using telegram to send error messages from your applicaiton",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ./ && echo \"eslint: no lint errors\"",
+    "start": "node index"
   },
   "repository": {
     "type": "git",
@@ -15,9 +17,10 @@
   ],
   "author": "witnessmenow",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/seven-leaps/error-shout-bot#readme",
+  "homepage": "https://github.com/sevenleaps/error-shout-bot/tree/master#error-shout-bot",
   "dependencies": {
     "bluebird": "^3.3.5",
-    "superagent": "^1.8.3"
+    "superagent": "^1.8.3",
+    "eslint": "^2.8.0"
   }
 }

@@ -1,0 +1,68 @@
+# So parent files don't get applied
+root: true
+
+env:
+  node: true
+
+extends: eslint:recommended
+
+parserOptions:
+  ecmaVersion: 5
+
+rules:
+  # Errors
+  array-bracket-spacing: [2, never]
+  arrow-spacing: 2
+  arrow-parens: 2
+  block-spacing: [2, always]
+  brace-style: 2
+  comma-spacing: [2, {before: false, after: true}]
+  comma-style: [2, last]
+  computed-property-spacing: [2, never]
+  consistent-this: [0, self]
+  consistent-return: 0 # Wishlist, one day
+  dot-notation: 2
+  dot-location: [2, property]
+  eqeqeq: [2, smart]
+  eol-last: 2
+  indent: [2, 2, {SwitchCase: 1}]
+  id-blacklist: [2, e]
+  keyword-spacing: 2
+  key-spacing: 2
+  max-len: [2, 180, 4]
+  new-cap: [0, {capIsNew: true, newIsCap: true}] # Wishlist, one day
+  no-unused-expressions: 2
+  no-unused-vars: 2
+  no-shadow: 0 # Wishlist, one day
+  no-spaced-func: 2
+  no-multiple-empty-lines: 2
+  no-multi-spaces: 2
+  no-undef: 2
+  no-empty-pattern: 2
+  no-dupe-keys: 2
+  no-dupe-args: 2
+  no-duplicate-case: 2
+  no-cond-assign: 2
+  no-extra-semi: 2
+  no-extra-boolean-cast: 2
+  no-trailing-spaces: 2
+  no-underscore-dangle: 2
+  no-unneeded-ternary: 2
+  no-unreachable: 2
+  one-var: [2, never]
+  operator-linebreak: [2, "after"]
+  padded-blocks: [2, never]
+  prefer-arrow-callback: 0 # Wishlist, one day
+  prefer-const: 2
+  quotes: [2, single, avoid-escape]
+  semi: [2, always]
+  space-before-blocks: [2, always]
+  space-before-function-paren: [2, never]
+  space-infix-ops: 2
+  space-unary-ops: [2, { words: true, nonwords: false }]
+  spaced-comment: 2
+  yoda: 2
+
+  # Disabled
+  strict: 0
+  no-case-declarations: 0
