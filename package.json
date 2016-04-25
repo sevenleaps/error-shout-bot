@@ -1,0 +1,23 @@
+{
+  "name": "error-shout-bot",
+  "version": "0.0.1",
+  "description": "Library for using telegram to send error messages from your applicaiton",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/seven-leaps/error-shout-bot.git"
+  },
+  "keywords": [
+    "Telegram"
+  ],
+  "author": "witnessmenow",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/seven-leaps/error-shout-bot#readme",
+  "dependencies": {
+    "bluebird": "^3.3.5",
+    "superagent": "^1.8.3"
+  }
+}
