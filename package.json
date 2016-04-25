@@ -1,6 +1,6 @@
 {
   "name": "error-shout-bot",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Library for using telegram to send error messages from your applicaiton",
   "main": "index.js",
   "scripts": {

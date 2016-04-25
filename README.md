@@ -1,10 +1,19 @@
+
+
 # error-shout-bot
 Is a library that uses [Telegram](http://telegram.org) to send messages from your application. Useful so your application isn't throwing errors silently.
+
+[![dependencies up to date](https://david-dm.org/sevenleaps/error-shout-bot)](https://david-dm.org/sevenleaps/error-shout-bot)
+
+[![npm version](https://badge.fury.io/js/error-shout-bot.svg)](https://badge.fury.io/js/error-shout-bot)
+
+[![Build Status](https://travis-ci.org/sevenleaps/error-shout-bot.svg?branch=master)](https://travis-ci.org/sevenleaps/error-shout-bot)
+#[error-shout-bot](http://github.com/sevenleaps/error-shout-bot)
 
 ### Installation & Configuration ###
 
 error-shout-bot is available as a [npm package](https://www.npmjs.com/package/error-shout-bot)
-```sh 
+```sh
 npm install error-shout-bot --save
 ```
 
@@ -59,6 +68,6 @@ Shout.sendError('Oh no - This is an error');
 
 **MethodName:** doSomething
 
-**Error:** 
+**Error:**
 
 TypeError: Cannot read property 'doSomething' of null
