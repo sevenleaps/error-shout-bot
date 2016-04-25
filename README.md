@@ -3,7 +3,7 @@
 # error-shout-bot
 Is a library that uses [Telegram](http://telegram.org) to send messages from your application. Useful so your application isn't throwing errors silently.
 
-[![dependencies up to date](https://david-dm.org/sevenleaps/error-shout-bot)](https://david-dm.org/sevenleaps/error-shout-bot)
+[![dependencies up to date](https://david-dm.org/sevenleaps/error-shout-bot.svg)](https://david-dm.org/sevenleaps/error-shout-bot)
 
 [![npm version](https://badge.fury.io/js/error-shout-bot.svg)](https://badge.fury.io/js/error-shout-bot)
 
