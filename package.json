@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/seven-leaps/error-shout-bot.git"
+    "url": "git@github.com:sevenleaps/error-shout-bot.git"
   },
   "keywords": [
     "Telegram"

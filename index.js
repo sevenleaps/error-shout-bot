@@ -1,30 +1,25 @@
 var request = require('superagent');
 var Promise = require('bluebird');
+var assert = require('assert');
 
-var BOT_TOKEN = process.env.ERROR_SHOUT_BOT_TOKEN;
-var ERROR_ENDPOINT = process.env.ERROR_SHOUT_ENDPOINT;
 
-var botTokenIsNotSet = !BOT_TOKEN;
-var errorEndPointIsNotSet = !ERROR_ENDPOINT;
+function Shout(botToken, chatId){
+  assert(botToken, "botToken needs to be set");
+  this.botToken = botToken;
+  assert(chatId, "chatId needs to be set");
+  this.chatId = chatId;
 
-if (botTokenIsNotSet) {
-  console.log('ERROR_SHOUT_BOT_TOKEN environment variable not configured');
+  this.baseTelegramUrl = 'https://api.telegram.org/bot' + this.botToken + '/';
+  this.botName = '';
 }
 
-if(errorEndPointIsNotSet) {
-  console.log('ERROR_SHOUT_ENDPOINT environment variable not configured');
-}
-
-var baseTelegramUrl = 'https://api.telegram.org/bot' + BOT_TOKEN + '/';
-
-var botName;
-function getBotName(){
+Shout.prototype.getBotName = function getBotName(){
+  var shout = this;
   return new Promise(function gettingBotName(resolve, reject) {
-    if (botName) {
-      resolve(botName);
+    if (shout.botName) {
+      resolve(shout.botName);
     } else {
-      var getMeUrl = baseTelegramUrl + 'getMe';
-
+      var getMeUrl = shout.baseTelegramUrl + 'getMe';
       request
         .get(getMeUrl)
         .accept('application/json')
@@ -36,30 +31,38 @@ function getBotName(){
             if (hasError) {
               reject(res.body.description);
             }
-            botName = res.body.result.username;
-            resolve(botName);
+            shout.botName = res.body.result.username;
+            resolve(shout.botName);
           }
       });
     }
   });
 };
 
-function sendError(message, source, methodName){
+function buildMessageText(message, source, methodName){
+  var messageText = '*Date:* ' + new Date() + '\n';
+  if(source){
+    messageText = messageText + '*Source:* ' + source + '\n';
+  }
+  if(methodName){
+    messageText = messageText + '*MethodName:* ' + methodName + '\n';
+  }
+  messageText = messageText + '*Error:* \n' + message;
+
+  return messageText;
+}
+
+Shout.prototype.sendError = function sendError(message, source, methodName){
+  var shout = this;
   return new Promise(function sendingErrorMessage(resolve, reject) {
 
-    var messageText = 'Date: ' + new Date() + '\n';
-    if(source){
-      messageText = messageText + 'Source: ' + source + '\n';
-    }
-    if(methodName){
-      messageText = messageText + 'MethodName: ' + methodName + '\n';
-    }
-    messageText = messageText + 'Error: \n' + message;
-    request.post(baseTelegramUrl + 'sendMessage')
+    var messageText = buildMessageText(message, source, methodName);
+    request.post(shout.baseTelegramUrl + 'sendMessage')
       .accept('application/json')
       .send({
-       chat_id: ERROR_ENDPOINT,
-       text: messageText
+       chat_id: shout.chatId,
+       text: messageText,
+       parse_mode: 'Markdown'
       })
       .end(function messageSent(err, res){
        if (err) {
@@ -75,7 +78,4 @@ function sendError(message, source, methodName){
   });
 };
 
-module.exports = exports = {
-  sendError,
-  getBotName
-};
+module.exports = Shout;
