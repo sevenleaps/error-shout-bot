@@ -24,5 +24,5 @@ try {
   var testVar = null;
   testVar.doSomething();
 } catch (error) {
-  Shout.sendError(error, 'error-shout-bot example', 'doSomething');
+  Shout.sendError(error, 'error-shout-bot example', 'doSomething', 'This is showing an error in a catch');
 }

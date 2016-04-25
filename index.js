@@ -39,23 +39,27 @@ Shout.prototype.getBotName = function getBotName() {
   });
 };
 
-function buildMessageText(message, source, methodName) {
+function buildMessageText(message, appName, methodName, detail) {
   var messageText = '*Date:* ' + new Date() + '\n';
-  if (source) {
-    messageText = messageText + '*Source:* ' + source + '\n';
+  if (appName) {
+    messageText = messageText + '*AppName:* ' + appName + '\n';
   }
   if (methodName) {
     messageText = messageText + '*MethodName:* ' + methodName + '\n';
+  }
+
+  if (detail) {
+    messageText = messageText + '*Detail:* ' + detail + '\n';
   }
   messageText = messageText + '*Error:* \n' + message;
 
   return messageText;
 }
 
-Shout.prototype.sendError = function sendError(message, source, methodName) {
+Shout.prototype.sendError = function sendError(message, appName, methodName, detail) {
   var shout = this;
   return new Promise(function sendingErrorMessage(resolve, reject) {
-    var messageText = buildMessageText(message, source, methodName);
+    var messageText = buildMessageText(message, appName, methodName, detail);
     request.post(shout.baseTelegramUrl + 'sendMessage')
       .accept('application/json')
       .send({
