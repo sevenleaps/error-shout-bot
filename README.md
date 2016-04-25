@@ -44,7 +44,7 @@ Shout.sendError('Oh no, an error', 'error-shout-bot-example', 'doingSomething')
 });
 ```
 
-The source and methodName of sendError are optional
+The "source" and "methodName" parameters of sendError are optional
 ```js
 Shout.sendError('Oh no - This is an error');
 ```
