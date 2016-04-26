@@ -19,8 +19,8 @@ npm install error-shout-bot --save
 
 Import the library and intialise it
 ```js
-var errorShout = require('error-shout-bot');
-var Shout = new errorShout(botToken, chatId);
+var ErrorShout = require('error-shout-bot');
+var Shout = new ErrorShout(botToken, chatId);
 ```
 
 **botToken** is a string that is unique to your bot. New bots and bot tokens can be requested from the [Telegram BotFather](https://telegram.me/botfather).
@@ -42,10 +42,10 @@ Shout.getBotName()
 });
 ```
 
-#####sendError(message, source, methodName)#####
+#####sendError(message, source, methodName, detail)#####
 returns a promise that will send the message to configured chatId
 ```js
-Shout.sendError('Oh no, an error', 'error-shout-bot-example', 'doingSomething')
+Shout.sendError('Oh no, an error', 'error-shout-bot-example', 'doingSomething' 'This could be a description of why this was sent')
 .then(function(responseFromTelegramApi){
   console.log('message sent');
 })
@@ -55,7 +55,7 @@ Shout.sendError('Oh no, an error', 'error-shout-bot-example', 'doingSomething')
 });
 ```
 
-The "source" and "methodName" parameters of sendError are optional
+The "source", "methodName" and "detail" parameters of sendError are optional
 ```js
 Shout.sendError('Oh no - This is an error');
 ```
@@ -67,6 +67,8 @@ Shout.sendError('Oh no - This is an error');
 **Source:** error-shout-bot example
 
 **MethodName:** doSomething
+
+**Detail:** Failed to do something.
 
 **Error:**
 
