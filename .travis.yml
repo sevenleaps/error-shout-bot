@@ -13,4 +13,4 @@ script:
   - npm run test
 
 notifications:
-  webhooks: ENV['SLACK_WEBHOOK']
+  webhooks: $SLACK_WEBHOOK
