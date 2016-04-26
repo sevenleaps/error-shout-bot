@@ -1,3 +1,4 @@
+// In your project it would be requiring 'error-shout-bot'
 var errorShout = require('./index.js');
 
 // Reading in token and chatId from environment variables
