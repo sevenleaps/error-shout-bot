@@ -1,7 +1,9 @@
 
 
 # error-shout-bot
-Is a library that uses [Telegram](http://telegram.org) to send messages from your application. Useful so your application isn't throwing errors silently.
+Don't let your errors be silent, let them shout!
+
+error-shout-bot a library that uses [Telegram](http://telegram.org) to send messages from your application. Get real-time messages from your application directly to your phone or PC.
 
 [![dependencies up to date](https://david-dm.org/sevenleaps/error-shout-bot.svg)](https://david-dm.org/sevenleaps/error-shout-bot)
 
