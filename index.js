@@ -42,18 +42,26 @@ Shout.prototype.getBotName = function getBotName() {
 function buildMessageText(message, appName, methodName, detail) {
   var messageText = '*Date:* ' + new Date() + '\n';
   if (appName) {
-    messageText = messageText + '*AppName:* ' + appName + '\n';
+    messageText = messageText + '*AppName:* ' + cleanText(appName) + '\n';
   }
   if (methodName) {
-    messageText = messageText + '*MethodName:* ' + methodName + '\n';
+    messageText = messageText + '*MethodName:* ' + cleanText(methodName) + '\n';
   }
-
   if (detail) {
-    messageText = messageText + '*Detail:* ' + detail + '\n';
+    messageText = messageText + '*Detail:* ' + cleanText(detail) + '\n';
   }
-  messageText = messageText + '*Error:* \n' + message;
+  messageText = messageText + '*Error:* \n' + cleanText(message);
 
   return messageText;
+}
+
+function cleanText(text) {
+  text = String(text);
+  text = text.replace(/_/g, '\\_');
+  text = text.replace(/\*/g, '\\*');
+  text = text.replace(/\`/g, '\\`');
+
+  return text;
 }
 
 Shout.prototype.sendError = function sendError(message, appName, methodName, detail) {

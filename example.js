@@ -18,7 +18,8 @@ Shout.getBotName()
 });
 
 // sendError - Example of a simple message
-Shout.sendError('Oh no - This is an error');
+Shout.sendError('Oh No, something happened');
+
 
 // sendError - Example of a message with a source and methodName inside a catch
 try {
@@ -27,3 +28,6 @@ try {
 } catch (error) {
   Shout.sendError(error, 'error-shout-bot example', 'doSomething', 'This is showing an error in a catch');
 }
+
+// showing that markdown characters get escaped
+Shout.sendError('SH*OU`T_ it out!');
