@@ -11,3 +11,6 @@ sudo: false
 script:
   - npm run lint
   - npm run test
+
+notifications:
+  webhooks: ENV['SLACK_WEBHOOK']
