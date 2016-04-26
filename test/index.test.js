@@ -11,19 +11,19 @@ chai.use(sinonChai);
 
 var BOT_TOKEN = 'botToken';
 var CHAT_ID = 'chatId';
-
+/* eslint-disable no-unused-expressions */
 describe('Testing error-shout-bot', function() {
   var ErrorShout = proxyquire('../index', { 'request': request });
 
   var requestGetSpy;
   var requestPostSpy;
 
-  beforeEach(function () {
+  beforeEach(function() {
     requestGetSpy = sinon.spy(request, 'get');
     requestPostSpy = sinon.spy(request, 'post');
   });
 
-  afterEach(function () {
+  afterEach(function() {
     request.get.restore();
     request.post.restore();
   });
@@ -58,7 +58,5 @@ describe('Testing error-shout-bot', function() {
     Shout.sendError('something');
     expect(requestPostSpy).to.be.called;
   });
-
-
-
 });
+/* eslint-disable no-unused-expressions */
