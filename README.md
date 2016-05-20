@@ -35,7 +35,7 @@ var Shout = new ErrorShout(botToken, chatId);
 
 ### Usage ###
 
-#####getBotName()#####
+##### getBotName() #####
 returns a promise that resolves with the bots name
 ```js
 Shout.getBotName()
@@ -43,8 +43,67 @@ Shout.getBotName()
   console.log(name);
 });
 ```
+### -- sendError with object -- ###
+##### sendError(messageObject) #####
+returns a promise that will format messageObject and send the message to configured chatId
+```js
+Shout.sendError({
+  message: 'An error with a complex object',
+  error: {
+    levelOne: {
+      levelTwo: {
+        levelThree: {
+          usefulInfo: '1+1=2'
+        }
+      }
+    }
+  },
+  anyRandomKey: 'meow',
+  number: 123,
+  boolean: false
+});
+.then(function(responseFromTelegramApi){
+  console.log('message sent');
+})
+.catch(function(error){
+  //Error from request or telegram
+  console.log(error);
+});
+```
 
-#####sendError(message, source, methodName, detail)#####
+##### Example message's output: #####
+
+**Date:** Mon Apr 25 2016 13:20:25 GMT+0100 (IST)
+
+**message:**
+An error with a complex object
+
+**error:**
+```js
+{
+  levelOne: {
+    levelTwo: {
+      levelThree: {
+        usefulInfo: "1+1=2"
+      }
+    }
+  }
+}
+```
+**anyRandomKey:**
+
+meow
+
+**number:**
+
+123
+
+**boolean:**
+
+false
+
+### -- sendError with strings -- ###
+##### sendError(message, source, methodName, detail) #####
 returns a promise that will send the message to configured chatId
 ```js
 Shout.sendError('Oh no, an error', 'error-shout-bot-example', 'doingSomething' 'This could be a description of why this was sent')
@@ -62,7 +121,7 @@ The "source", "methodName" and "detail" parameters of sendError are optional
 Shout.sendError('Oh no - This is an error');
 ```
 
-###Example of the message output:###
+##### Example of the message output: #####
 
 **Date:** Mon Apr 25 2016 13:20:25 GMT+0100 (IST)
 

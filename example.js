@@ -31,3 +31,33 @@ try {
 
 // showing that markdown characters get escaped
 Shout.sendError('SH*OU`T_ it out!');
+
+// sending an error using an Object
+Shout.sendError({ message: 'this is an error object'});
+Shout.sendError({
+  message: 'An error with a complex object',
+  error: {
+    levelOne: {
+      levelTwo: {
+        levelThree: {
+          usefulInfo: '1+1=2'
+        }
+      }
+    }
+  }
+});
+Shout.sendError({
+  message: 'An error with a complex object',
+  error: {
+    levelOne: {
+      levelTwo: {
+        levelThree: {
+          usefulInfo: '1+1=2'
+        }
+      }
+    }
+  },
+  anyRandomKey: 'meow',
+  number: 123,
+  boolean: false
+});

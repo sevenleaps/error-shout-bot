@@ -1,6 +1,7 @@
 var request = require('superagent');
 var Promise = require('bluebird');
 var assert = require('assert');
+var stringifyObject = require('stringify-object');
 
 
 function Shout(botToken, chatId) {
@@ -64,10 +65,38 @@ function cleanText(text) {
   return text;
 }
 
+function buildMessageTextForObject(messageObject) {
+  var messageText = '*Date:* ' + new Date() + '\n';
+  Object.keys(messageObject).forEach(function buildMessageForProperty(key) {
+    var content = messageObject[key];
+    if (typeof content === 'object') {
+      content = stringifyObject(content, {
+        indent: '  ',
+        singleQuotes: false
+      });
+    }
+
+    messageText = messageText + '*' + key + ':* \n' + cleanText(content) + '\n';
+  });
+
+  return messageText;
+}
+
 Shout.prototype.sendError = function sendError(message, appName, methodName, detail) {
   var shout = this;
   return new Promise(function sendingErrorMessage(resolve, reject) {
-    var messageText = buildMessageText(message, appName, methodName, detail);
+    var messageText = null;
+    if (typeof message === 'object') {
+      var validMessage = message && Object.keys(message).length > 0;
+      if (validMessage) {
+        messageText = buildMessageTextForObject(message);
+      }
+    }
+
+    if (!messageText) {
+      messageText = buildMessageText(message, appName, methodName, detail);
+    }
+
     request.post(shout.baseTelegramUrl + 'sendMessage')
       .accept('application/json')
       .send({
